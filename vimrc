@@ -102,4 +102,4 @@ ab #i  #include
 ab #c  /*   */
 ab #b  /**************************************************************/
 ab #l  /*------------------------------------------------------------*/
-ab @c  Copyright C CG. ALL Rights Reserved.
+ab @c  PLEASE SEE LICENCE FILE
