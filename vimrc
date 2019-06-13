@@ -84,6 +84,7 @@ set autowrite           " Automatically save before commands like :next and :mak
 set hidden              " Hide buffers when they are abandoned
 set mouse=a             " Enable mouse usage (all modes)
 set nolist              " Hide Special Characters
+set clipboard=unnamedplus  " Use + clipboard
 
 " Backspace setting
 " indent,eol,start
