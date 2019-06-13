@@ -2,6 +2,7 @@
 
 apt-get install git
 apt-get install vim
+apt-get install vim-gtk
 
 git clone https://github.com/broxigarchen/my-vimrc /usr/share/vimrc_brox
 cp /usr/share/vimrc_brox/vimrc ~/.vim/vimrc
