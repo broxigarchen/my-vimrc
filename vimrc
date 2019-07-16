@@ -68,7 +68,8 @@ colorscheme solarized
 " Taglist
 map <F9> :TlistToggle<CR>
 map <F10> :silent !{ctags -R}<CR>
-map <C-\> :tab split<CR>exec("tag".expand("<cword>"))<CR>
+map <S-t> :exec "ts ".expand("<cword>")<CR>
+noremap <C-\> :tab split<CR>:let mytag=expand("<cword>")<CR>:TlistToggle<CR>:NERDTreeToggle<CR><C-w><C-h>:exec "ts ".mytag<CR>
 let Tlist_Exit_OnlyWindow = 1    " taglist will exit when it is the only opened windows
 "let Tlist_Use_Right_Window = 1   " Dis at right side
 filetype on
@@ -89,6 +90,11 @@ set hidden              " Hide buffers when they are abandoned
 set mouse=a             " Enable mouse usage (all modes)
 set nolist              " Hide Special Characters
 set clipboard=unnamedplus   " Use + clipboard
+" Open new empty tab
+noremap <C-n> :tab new<CR>i
+set listchars=eol:$,tab:'.,space:.    "set list chars
+"set list toggle
+nnoremap <F4> :set list!<CR>    
 
 " search preference
 set ignorecase          " Do case insensitive matching
@@ -109,9 +115,7 @@ function! QuickFixToggle()
 endfunction
 nnoremap <F3> :call QuickFixToggle()<CR>
 map <C-f> :grep! "\<<cword>\>" %<CR>:botright copen<CR>
-map <C-d> :grep! "\<<cword>\>" . -r<CR>:botright copen 33<CR>   "search recursively and display quickfix
-map <C-n> :cp!<CR>       " F5 next occurence
-map <C-m> :cn!<CR>       " F6 previous occurence
+map <C-r> :grep! "\<<cword>\>" . -R --include=?*.c --include=?*.cpp --include=?*.h<CR>:botright copen<CR>   "search recursively and display quickfix
 
 " yank those cheat commands, in normal mode type q: than p to paste in the opened cmdline
 " how-to search for a string recursively
