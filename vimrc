@@ -103,19 +103,27 @@ set incsearch           " Incremental search
 set hlsearch            " high light matches
 let g:quickfix_is_open = 0
 function! QuickFixToggle()
-  if g:quickfix_is_open
-        cclose
-        let g:quickfix_is_open = 0
-        execute g:quickfix_return_to_window . "wincmd w"
-    else
-        let g:quickfix_return_to_window = winnr()
-        botright copen
-        let g:quickfix_is_open = 1
-	endif
+  if g:quickfix_is_open == 2
+		cclose
+		let g:quickfix_is_open = 0
+		execute g:quickfix_return_to_window . "wincmd w"
+  else
+		if g:quickfix_is_open == 0
+			let g:quickfix_return_to_window = winnr()
+			let g:quickfix_is_open = 1
+			botright copen
+		else
+				if g:quickfix_is_open == 1
+				let g:quickfix_is_open = 2
+				botright copen 40
+			endif
+		endif
+   endif
 endfunction
 nnoremap <F3> :call QuickFixToggle()<CR>
 map <C-f> :grep! "\<<cword>\>" %<CR>:botright copen<CR>
-map <C-r> :grep! "\<<cword>\>" . -R --include=?*.c --include=?*.cpp --include=?*.h<CR>:botright copen<CR>   "search recursively and display quickfix
+"map <C-r> :grep! "\<<cword>\>" . -R --include=?*.c --include=?*.cpp --include=?*.h<CR>:botright copen<CR>   "search recursively and display quickfix
+map <C-r> :grep! "\<<cword>\>" . -R <CR>:botright copen<CR>   "search recursively and display quickfix
 
 " yank those cheat commands, in normal mode type q: than p to paste in the opened cmdline
 " how-to search for a string recursively
