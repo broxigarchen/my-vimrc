@@ -102,6 +102,11 @@ set smartcase           " Do smart case matching
 set incsearch           " Incremental search
 set hlsearch            " high light matches
 let g:quickfix_is_open = 0
+function! QuickFixOpen()
+    let g:quickfix_return_to_window = winnr()
+    let g:quickfix_is_open = 1
+    botright copen
+endfunction
 function! QuickFixToggle()
   if g:quickfix_is_open == 2
 		cclose
@@ -113,7 +118,7 @@ function! QuickFixToggle()
 			let g:quickfix_is_open = 1
 			botright copen
 		else
-				if g:quickfix_is_open == 1
+			if g:quickfix_is_open == 1
 				let g:quickfix_is_open = 2
 				botright copen 40
 			endif
@@ -121,9 +126,8 @@ function! QuickFixToggle()
    endif
 endfunction
 nnoremap <F3> :call QuickFixToggle()<CR>
-map <C-f> :grep! "\<<cword>\>" %<CR>:botright copen<CR>
-"map <C-r> :grep! "\<<cword>\>" . -R --include=?*.c --include=?*.cpp --include=?*.h<CR>:botright copen<CR>   "search recursively and display quickfix
-map <C-r> :grep! "\<<cword>\>" . -R <CR>:botright copen<CR>   "search recursively and display quickfix
+map <C-f> :grep! "\<<cword>\>" %<CR>:call QuickFixOpen()<CR>
+map <C-r> :grep! "\<<cword>\>" . -R <CR>:call QuickFixOpen()<CR>   "search recursively 
 
 " yank those cheat commands, in normal mode type q: than p to paste in the opened cmdline
 " how-to search for a string recursively
