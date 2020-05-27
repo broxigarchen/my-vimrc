@@ -1,26 +1,26 @@
 " ------------------------------------------------
-" Date   : 19/6/20
+" Date	 : 19/6/20
 " Brief  : Vim Configure File
 " Desc.
 " add search configuration
 " ------------------------------------------------
 " ------------------------------------------------
-" Date   : 17/5/28
+" Date	 : 17/5/28
 " Brief  : Vim Configure File
 " Desc.
 " Vimrc with vundle.vim 
 " ------------------------------------------------
-set nocompatible        " no compatible with vi
-filetype off            " necessary 
+set nocompatible		" no compatible with vi
+filetype off			" necessary 
 
-set rtp+=~/.vim/bundle/Vundle.vim/     " Vundle Initialize & runtime path
+set rtp+=~/.vim/bundle/Vundle.vim/	   " Vundle Initialize & runtime path
 
 " format for plugins installation using Vundle
 " please add installation command between vundle#begin and vundle#end.
 
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'          " Let Vundle manage itself
+Plugin 'VundleVim/Vundle.vim'		   " Let Vundle manage itself
 
 " Plugins from Github
 " Format: Plugin 'USR/REPO'
@@ -48,15 +48,15 @@ Plugin 'git://github.com/scrooloose/nerdtree.git'
 " Format: Plugin 'file://ABSOULATE_PATH'
 
 
-call vundle#end()                      " Necessary
-filetype plugin indent on              " Necessary
+call vundle#end()					   " Necessary
+filetype plugin indent on			   " Necessary
 
 " Simple Manual of Vundle
-" :PluginList          - List every installed plugins
-" :PluginInstall       - Install plugin, add '!' to update or used ':PluginUpdate'
+" :PluginList		   - List every installed plugins
+" :PluginInstall	   - Install plugin, add '!' to update or used ':PluginUpdate'
 " :PluginSearch foo    - seach foo, add '!' clean local cache
-" :PluginClean         - clean unused plugins with confirms, add '!' allow automatically remove plugin
-" :h vundle            - Get more details, wiki and FAQ
+" :PluginClean		   - clean unused plugins with confirms, add '!' allow automatically remove plugin
+" :h vundle			   - Get more details, wiki and FAQ
 " Insert plugins setting below this line
 
 " Solarized Color
@@ -70,7 +70,7 @@ map <F9> :TlistToggle<CR>
 map <F10> :silent !{ctags -R}<CR>
 map <S-t> :exec "ts ".expand("<cword>")<CR>
 noremap <C-\> :tab split<CR>:let mytag=expand("<cword>")<CR>:TlistToggle<CR>:NERDTreeToggle<CR><C-w><C-h>:exec "ts ".mytag<CR>
-let Tlist_Exit_OnlyWindow = 1    " taglist will exit when it is the only opened windows
+let Tlist_Exit_OnlyWindow = 1	 " taglist will exit when it is the only opened windows
 "let Tlist_Use_Right_Window = 1   " Dis at right side
 filetype on
 
@@ -79,33 +79,33 @@ filetype on
 map <F8> :NERDTreeToggle<CR>
 " close vim when the lasted open window is nerdtree
 autocmd vimenter * NERDTree    autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeWinPos = 1            "Dis at right side
+let NERDTreeWinPos = 1			  "Dis at right side
 
 " Vim settig
 " Insert General Configuration Under This line
-set number              " Display line number
-set showcmd             " Show  (partial) command in status line.
-set autowrite           " Automatically save before commands like :next and :make
-set hidden              " Hide buffers when they are abandoned
-set mouse=a             " Enable mouse usage (all modes)
-set nolist              " Hide Special Characters
-set clipboard=unnamedplus   " Use + clipboard
+set number				" Display line number
+set showcmd				" Show	(partial) command in status line.
+set autowrite			" Automatically save before commands like :next and :make
+set hidden				" Hide buffers when they are abandoned
+set mouse=a				" Enable mouse usage (all modes)
+set nolist				" Hide Special Characters
+set clipboard=unnamedplus	" Use + clipboard
 " Open new empty tab
 noremap <C-n> :tab new<CR>i
-set listchars=eol:$,tab:'.,space:.    "set list chars
+set listchars=eol:$,tab:'.,space:.	  "set list chars
 "set list toggle
-nnoremap <F4> :set list!<CR>    
+nnoremap <F4> :set list!<CR>	
 
 " search preference
-set ignorecase          " Do case insensitive matching
-set smartcase           " Do smart case matching
-set incsearch           " Incremental search
-set hlsearch            " high light matches
+set ignorecase			" Do case insensitive matching
+set smartcase			" Do smart case matching
+set incsearch			" Incremental search
+set hlsearch			" high light matches
 let g:quickfix_is_open = 0
 function! QuickFixOpen()
-    let g:quickfix_return_to_window = winnr()
-    let g:quickfix_is_open = 1
-    botright copen
+	let g:quickfix_return_to_window = winnr()
+	let g:quickfix_is_open = 1
+	botright copen
 endfunction
 function! QuickFixToggle()
   if g:quickfix_is_open == 2
@@ -127,7 +127,7 @@ function! QuickFixToggle()
 endfunction
 nnoremap <F3> :call QuickFixToggle()<CR>
 map <C-f> :grep! "\<<cword>\>" %<CR>:call QuickFixOpen()<CR>
-map <C-r> :grep! "\<<cword>\>" . -R --include \*.h --include \*.c --include \*.cpp<CR>:call QuickFixOpen()<CR>   "search recursively 
+map <C-r> :grep! "\<<cword>\>" . -R --include \*.h --include \*.c --include \*.cpp<CR>:call QuickFixOpen()<CR>	 "search recursively 
 
 " yank those cheat commands, in normal mode type q: than p to paste in the opened cmdline
 " how-to search for a string recursively
@@ -159,12 +159,14 @@ set sw=4
 let g:use_space_in_tab = 0
 function! UseSpaceInTabToggle()
 	if g:use_space_in_tab == 0
+		let g:use_space_in_tab = 1
 		set expandtab
 	else
+		let g:use_space_in_tab = 0
 		set noexpandtab
 	endif
 endfunction
-nmap <F2> :call UseSpaceInTabToggle()<CR>
+nmap <F2> :call UseSpaceInTabToggle()<CR>:%retab!<CR>
 
 " <F12> -> save
 nmap <F12> :w!<cr>
@@ -173,7 +175,7 @@ imap <F12> <esc>:w!<cr>
 " Abbreviate Definiation
 ab #d  #define 
 ab #i  #include 
-ab #c  /*   */
+ab #c  /*	*/
 ab #b  /**************************************************************/
 ab #l  /*------------------------------------------------------------*/
 ab @c  PLEASE SEE LICENCE FILE
