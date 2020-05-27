@@ -127,7 +127,7 @@ function! QuickFixToggle()
 endfunction
 nnoremap <F3> :call QuickFixToggle()<CR>
 map <C-f> :grep! "\<<cword>\>" %<CR>:call QuickFixOpen()<CR>
-map <C-r> :grep! "\<<cword>\>" . -R <CR>:call QuickFixOpen()<CR>   "search recursively 
+map <C-r> :grep! "\<<cword>\>" . -R --include \*.h --include \*.c --include \*.cpp<CR>:call QuickFixOpen()<CR>   "search recursively 
 
 " yank those cheat commands, in normal mode type q: than p to paste in the opened cmdline
 " how-to search for a string recursively
@@ -156,6 +156,15 @@ set backspace=indent,eol,start
 " TAB settingg
 set ts=4
 set sw=4
+let g:use_space_in_tab = 0
+function! UseSpaceInTabToggle()
+	if g:use_space_in_tab == 0
+		set expandtab
+	else
+		set noexpandtab
+	endif
+endfunction
+nmap <F2> :call UseSpaceInTabToggle()<CR>
 
 " <F12> -> save
 nmap <F12> :w!<cr>
