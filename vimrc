@@ -80,6 +80,7 @@ map <F8> :NERDTreeToggle<CR>
 " close vim when the lasted open window is nerdtree
 autocmd vimenter * NERDTree    autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeWinPos = 1			  "Dis at right side
+map <leader>r :NERDTreeFind<cr>            " \+r  expand current tab file directory
 
 " Vim settig
 " Insert General Configuration Under This line
