@@ -36,13 +36,13 @@ Plugin 'taglist.vim'
 " Format: Plugin 'git://REPO_URL'
 
 " Syntax solarized
-Plugin 'git://github.com/altercation/vim-colors-solarized.git'
+Plugin 'https://github.com/altercation/vim-colors-solarized.git'
 
 " Navigation Ctrl+P
-Plugin 'git://github.com/kien/ctrlp.vim.git'
+Plugin 'https://github.com/kien/ctrlp.vim.git'
 
 " Navigation NERDTree
-Plugin 'git://github.com/scrooloose/nerdtree.git'
+Plugin 'https://github.com/scrooloose/nerdtree.git'
 
 " Plugins from local machine
 " Format: Plugin 'file://ABSOULATE_PATH'
